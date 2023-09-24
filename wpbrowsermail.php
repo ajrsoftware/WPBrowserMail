@@ -1,12 +1,11 @@
 <?php
-
 /**
  * Plugin Name:         WPBrowserMail
- * Plugin URI:          https://www.wpbrowsermail.com.
+ * Plugin URI:          https://www.wpbrowsermail.com
  * Description:         WordPress Plugin to allow emails to be viewed in the browser
  * Version:             0.0.1
  * Author:              AJR Software 
- * Author URI:          https://github.com/ajrsoftware
+ * Author URI:          https://www.ajrsoftware.com
  * License              GPL v3 or later
  * Text Domain:         wpbm
  * Domain Path:         /languages
