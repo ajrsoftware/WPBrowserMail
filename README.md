@@ -22,6 +22,6 @@ WordPress Plugin to allow emails to be viewed in the browser
 
 ## Getting started
 
-[See our getting started guide](https://www.wpbrowsermail.com.)
+[See our getting started guide](https://www.wpbrowsermail.com)
 
-[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases).
+[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases)

@@ -21,11 +21,11 @@ WordPress Plugin to allow emails to be viewed in the browser
 
 == Installation and use ==
 
-[See our getting started guide](https://www.wpbrowsermail.com.)
+[See our getting started guide](https://www.wpbrowsermail.com)
 
 == Changelog ==
 
-[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases).
+[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases)
 
 == Help and support ==
 
