@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Dumps and displays a variable value for debugging purposes in the WordPress Browser Mail (wpbrowsermail) plugin.
  *

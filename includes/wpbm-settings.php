@@ -123,7 +123,7 @@ function wpbm_plugin_section_useage()
         <br />
         <label for="wpbm_plugin_options_usage_shortcode">
             <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
-            <span>Use shortcode <a href="https://www.wpbrowsermail.com/shortcode" target="_blank" rel="noopener noreferrer">(learn more)</a> (coming soon)</span>
+            <span>Use shortcode <a href="https://www.wpbrowsermail.com/shortcode" target="_blank" rel="noopener noreferrer">(learn more)</a></span>
         </label>
     </fieldset>
     <br />
