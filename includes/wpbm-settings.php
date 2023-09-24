@@ -66,8 +66,7 @@ function wpbm_plugin_section_preview()
 {
     $options = get_option('wpbm_plugin_options');
 ?>
-    <p><?php echo $options['message']; ?> <span style="text-decoration: underline;"><?php echo $options['label']; ?></span></p>
-    <br />
+    <p class="wpbm_plugin_options_preview"><?php echo $options['message']; ?> <span style="text-decoration: underline;"><?php echo $options['label']; ?></span></p>
 <?php
 }
 
