@@ -3,6 +3,11 @@
 function wpbm_defaults(): void
 {
     $options = get_option('wpbm_plugin_options');
+    $key_values = get_option('wpbm_plugin_key_values');
+
+    if (empty($key_values)) {
+        update_option('wpbm_plugin_key_values', []);
+    }
 
     if (empty($options['message'])) {
         $options['message'] = 'Something wrong with the email?';
