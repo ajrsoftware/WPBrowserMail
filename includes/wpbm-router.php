@@ -16,19 +16,32 @@ function wpbm_route_request()
         return false;
     }
 
+    // qp key
     $key = $_GET['wpbm_key'];
 
-    $key_values = get_option('wpbm_plugin_key_values');
-    $value = $key_values[$key];
-
+    // Empty key
     if (empty($key)) {
         return false;
     }
 
-    echo $value;
+    // Load kv
+    $key_values = get_option('wpbm_plugin_key_values');
+
+    // Key doesnt exists
+    if (!isset($key_values[$key])) {
+        return false;
+    }
+
+    // Temp var for the markup
+    $value = $key_values[$key];
 
     // Remove the entry so the email cannot be access again by sharing links etc.
     unset($key_values[$key]);
 
+    // Update cache with cleaned kv
     update_option('wpbm_plugin_key_values', $key_values);
+
+    // Display the mail html
+    echo $value;
+    exit;
 }
