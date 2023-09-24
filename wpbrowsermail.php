@@ -35,6 +35,7 @@ require_once 'includes/wpbm-defaults.php';
 require_once 'includes/wpbm-settings.php';
 require_once 'includes/wpbm-impl.php';
 require_once 'includes/wpbm-auto.php';
+require_once 'includes/wpbm-shortcode.php';
 require_once 'includes/wpbm-router.php';
 
 add_action('plugins_loaded', 'wpbm_start');
@@ -43,5 +44,6 @@ function wpbm_start(): void
 {
     add_action('admin_enqueue_scripts', 'wpbm_assets');
     add_action('admin_menu', 'wpbm_settings_page');
+    // add_shortcode('wpbrowsermail', 'wpbm_shortcode');
     add_filter('wp_mail', 'wpbm_wp_mail');
 }

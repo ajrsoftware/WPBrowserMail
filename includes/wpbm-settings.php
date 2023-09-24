@@ -82,13 +82,13 @@ function wpbm_plugin_section_useage()
         </label>
         <br />
         <label for="wpbm_plugin_options_usage_shortcode">
-            <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
-            <span>Use shortcode</span>
+            <input type="radio" disabled name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
+            <span>Use shortcode (coming soon)</span>
         </label>
     </fieldset>
     <br />
     <p id="wpbm_plugin_options_usage_auto_tip">Your email browser link will automatically be added to the footer of your mail.</p>
-    <pre id="wpbm_plugin_options_usage_shortcode_tip"><code>[something]</code></pre>
+    <pre id="wpbm_plugin_options_usage_shortcode_tip"><code>[wpbrowsermail]</code></pre>
 <?php
 }
 
