@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Plugin Name:         WPBrowserMail
  * Plugin URI:          https://www.wpbrowsermail.com
  * Description:         WordPress Plugin to allow emails to be viewed in the browser
- * Version:             0.0.1
+ * Version:             0.0.0
  * Author:              AJR Software 
  * Author URI:          https://www.ajrsoftware.com
  * License              GPL v3 or later
@@ -24,3 +25,20 @@
  */
 
 defined('ABSPATH') || exit;
+
+require_once 'includes/wpbm-constants.php';
+require_once 'includes/wpbm-helpers.php';
+require_once 'includes/wpbm-defaults.php';
+require_once 'includes/wpbm-settings.php';
+
+add_action('plugins_loaded', 'wpbm_start');
+
+function wpbm_start(): void
+{
+    function wpbm_settings_page(): void
+    {
+        add_options_page('WPBrowserMail', 'WPBrowserMail', 'manage_options', 'wp-browser-mail', 'wpbm_render_plugin_settings_page');
+        wpbm_defaults();
+    }
+    add_action('admin_menu', 'wpbm_settings_page');
+}
