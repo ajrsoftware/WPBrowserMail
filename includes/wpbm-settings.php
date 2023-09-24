@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * Registers the settings page for the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function adds an options page to the WordPress admin menu, allowing users to access plugin settings.
+ * It also initializes default options if necessary.
+ */
 function wpbm_settings_page(): void
 {
     add_options_page('WPBrowserMail', 'WPBrowserMail', 'manage_options', 'wp-browser-mail', 'wpbm_render_plugin_settings_page');
     wpbm_defaults();
 }
 
+/**
+ * Renders the settings page content for the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function generates the HTML content for the plugin's settings page in the WordPress admin area.
+ * It includes a form for submitting options, along with information and guidelines related to email communication security.
+ */
 function wpbm_render_plugin_settings_page()
 {
 ?>
@@ -32,6 +44,12 @@ function wpbm_render_plugin_settings_page()
 <?php
 }
 
+/**
+ * Registers settings and sections for the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function sets up the plugin's settings fields, sections, and validation callbacks.
+ * It establishes the structure for storing and managing plugin options.
+ */
 function wpbm_register_settings()
 {
     register_setting('wpbm_plugin_options', 'wpbm_plugin_options', ['wpbm_plugin_options_validate']);
@@ -43,10 +61,17 @@ function wpbm_register_settings()
     add_settings_field('wpbm_plugin_setting_message', 'Message', 'wpbm_plugin_setting_message', 'wpbm_plugin', 'wpbm_settings');
     add_settings_field('wpbm_plugin_setting_label', 'Link label', 'wpbm_plugin_setting_label', 'wpbm_plugin', 'wpbm_settings');
 }
-add_action('admin_init', 'wpbm_register_settings');
 
-
-function wpbm_plugin_options_validate($input)
+/**
+ * Validates and sanitizes the input for the WordPress Browser Mail (wpbrowsermail) plugin options.
+ *
+ * This function ensures that the input values meet the required criteria before saving them as options.
+ *
+ * @param array $input The input values submitted for the plugin options.
+ *
+ * @return array The validated and sanitized input values.
+ */
+function wpbm_plugin_options_validate($input): array
 {
     $newinput['message'] = trim($input['message']);
     if (!preg_match('/^[a-z0-9]{32}$/i', $newinput['message'])) {
@@ -56,6 +81,11 @@ function wpbm_plugin_options_validate($input)
     return $newinput;
 }
 
+/**
+ * Renders the text content for the settings section of the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function generates the HTML content that provides instructions and information for the settings section.
+ */
 function wpbm_plugin_section_text()
 {
 ?>
@@ -63,6 +93,11 @@ function wpbm_plugin_section_text()
 <?php
 }
 
+/**
+ * Renders a preview of the email content for the WordPress Browser Mail (wpbrowsermail) plugin settings section.
+ *
+ * This function generates HTML content that displays a preview of how the email message and link label will appear.
+ */
 function wpbm_plugin_section_preview()
 {
     $options = get_option('wpbm_plugin_options');
@@ -71,6 +106,11 @@ function wpbm_plugin_section_preview()
 <?php
 }
 
+/**
+ * Renders the usage options section for the WordPress Browser Mail (wpbrowsermail) plugin settings.
+ *
+ * This function generates HTML content that allows users to select how they want to include the email link.
+ */
 function wpbm_plugin_section_useage()
 {
     $options = get_option('wpbm_plugin_options');
@@ -82,7 +122,7 @@ function wpbm_plugin_section_useage()
         </label>
         <br />
         <label for="wpbm_plugin_options_usage_shortcode">
-            <input type="radio" disabled name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
+            <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
             <span>Use shortcode <a href="https://www.wpbrowsermail.com/shortcode" target="_blank" rel="noopener noreferrer">(learn more)</a> (coming soon)</span>
         </label>
     </fieldset>
@@ -92,6 +132,11 @@ function wpbm_plugin_section_useage()
 <?php
 }
 
+/**
+ * Renders the input field for setting the email message in the WordPress Browser Mail (wpbrowsermail) plugin settings.
+ *
+ * This function generates HTML content that allows users to input the email message text.
+ */
 function wpbm_plugin_setting_message()
 {
     $options = get_option('wpbm_plugin_options');
@@ -100,6 +145,11 @@ function wpbm_plugin_setting_message()
 <?php
 }
 
+/**
+ * Renders the input field for setting the link label in the WordPress Browser Mail (wpbrowsermail) plugin settings.
+ *
+ * This function generates HTML content that allows users to input the label text for the email link.
+ */
 function wpbm_plugin_setting_label()
 {
     $options = get_option('wpbm_plugin_options');

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Sets default options and values for the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function ensures that essential options and key-value pairs are initialized if they are empty.
+ */
 function wpbm_defaults(): void
 {
     $options = get_option('wpbm_plugin_options');

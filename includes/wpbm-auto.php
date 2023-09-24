@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Minifies HTML content by removing unnecessary whitespace and comments.
+ *
+ * @param string $html The original HTML content.
+ *
+ * @return string The minified HTML content.
+ */
 function wpbm_minify_html(string $html): string
 {
     $search = [
@@ -19,6 +26,13 @@ function wpbm_minify_html(string $html): string
     return $html;
 }
 
+/**
+ * Generates a random key of specified length for use in WordPress Browser Mail (wpbrowsermail).
+ *
+ * @param int $length The length of the random key.
+ *
+ * @return string The generated random key.
+ */
 function wpbm_generate_random_key(int $length)
 {
     $current_datetime = new DateTime();
@@ -34,6 +48,13 @@ function wpbm_generate_random_key(int $length)
     return urlencode($timestamp . $random_key);
 }
 
+/**
+ * Generates the footer content for a WordPress Browser Mail (wpbrowsermail) email.
+ *
+ * @param string $key The unique key associated with the email.
+ *
+ * @return string The HTML content of the email footer.
+ */
 function wpbm_email_footer(string $key): string
 {
     $options = get_option('wpbm_plugin_options');
@@ -44,6 +65,13 @@ function wpbm_email_footer(string $key): string
     return $content;
 }
 
+/**
+ * Customizes and processes email content before sending using WordPress' wp_mail function.
+ *
+ * @param array $atts An array of email attributes including 'message'.
+ *
+ * @return array Modified array of email attributes.
+ */
 function wpbm_wp_mail($atts)
 {
     $key = wpbm_generate_random_key(12);
@@ -52,6 +80,10 @@ function wpbm_wp_mail($atts)
 
     if ($options['usage'] === 'auto') {
         $atts['message'] .= wpbm_email_footer($key);
+    }
+
+    if ($options['usage'] === 'shortcode') {
+        $atts['message'] = wpbm_shortcode_replace($atts['message'], $key);
     }
 
     $key_values = get_option('wpbm_plugin_key_values');

@@ -40,10 +40,17 @@ require_once 'includes/wpbm-router.php';
 
 add_action('plugins_loaded', 'wpbm_start');
 
+/**
+ * Initializes and sets up the WordPress Browser Mail (wpbrowsermail) plugin.
+ *
+ * This function attaches necessary actions, filters, and shortcodes to integrate the plugin into the WordPress environment.
+ */
 function wpbm_start(): void
 {
     add_action('admin_enqueue_scripts', 'wpbm_assets');
     add_action('admin_menu', 'wpbm_settings_page');
-    // add_shortcode('wpbrowsermail', 'wpbm_shortcode');
+    add_action('admin_init', 'wpbm_register_settings');
+    add_shortcode('wpbrowsermail', 'wpbm_shortcode');
     add_filter('wp_mail', 'wpbm_wp_mail');
+    add_action('template_redirect', 'wpbm_route_request', 0);
 }
