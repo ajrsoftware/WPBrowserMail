@@ -35,6 +35,7 @@ require_once 'includes/wpbm-defaults.php';
 require_once 'includes/wpbm-settings.php';
 require_once 'includes/wpbm-impl.php';
 require_once 'includes/wpbm-auto.php';
+require_once 'includes/wpbm-router.php';
 
 add_action('plugins_loaded', 'wpbm_start');
 
