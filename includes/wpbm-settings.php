@@ -1,5 +1,11 @@
 <?php
 
+function wpbm_settings_page(): void
+{
+    add_options_page('WPBrowserMail', 'WPBrowserMail', 'manage_options', 'wp-browser-mail', 'wpbm_render_plugin_settings_page');
+    wpbm_defaults();
+}
+
 function wpbm_render_plugin_settings_page()
 {
 ?>

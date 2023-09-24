@@ -33,16 +33,14 @@ require_once 'includes/wpbm-helpers.php';
 require_once 'includes/wpbm-scripts.php';
 require_once 'includes/wpbm-defaults.php';
 require_once 'includes/wpbm-settings.php';
+require_once 'includes/wpbm-impl.php';
+require_once 'includes/wpbm-auto.php';
 
 add_action('plugins_loaded', 'wpbm_start');
 
 function wpbm_start(): void
 {
     add_action('admin_enqueue_scripts', 'wpbm_assets');
-    function wpbm_settings_page(): void
-    {
-        add_options_page('WPBrowserMail', 'WPBrowserMail', 'manage_options', 'wp-browser-mail', 'wpbm_render_plugin_settings_page');
-        wpbm_defaults();
-    }
     add_action('admin_menu', 'wpbm_settings_page');
+    add_filter('wp_mail', 'wpbm_wp_mail');
 }
