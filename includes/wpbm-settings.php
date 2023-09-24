@@ -27,6 +27,7 @@ function wpbm_render_plugin_settings_page()
             <p>The user's diligence in these matters plays a crucial role in maintaining a high standard of email communication and upholding ethical email practices.</p>
         </li>
         <li>Mail accessed via the <i>view in browser</i> link can only be viewed once.</li>
+        <li><a href="https://www.wpbrowsermail.com/security" target="_blank" rel="noopener noreferrer">Read more</a></li>
     </ul>
 <?php
 }
@@ -77,12 +78,12 @@ function wpbm_plugin_section_useage()
     <fieldset>
         <label for="wpbm_plugin_options_usage_auto">
             <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_auto" class="wpbm_plugin_options_usage_auto" value="auto" <?php echo esc_attr($options['usage']) === 'auto' ? 'checked' : '' ?>>
-            <span>Include in email footer</span>
+            <span>Include as email footer <a href="https://www.wpbrowsermail.com/auto-include" target="_blank" rel="noopener noreferrer">(learn more)</a></span>
         </label>
         <br />
         <label for="wpbm_plugin_options_usage_shortcode">
             <input type="radio" disabled name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
-            <span>Use shortcode (coming soon)</span>
+            <span>Use shortcode <a href="https://www.wpbrowsermail.com/shortcode" target="_blank" rel="noopener noreferrer">(learn more)</a> (coming soon)</span>
         </label>
     </fieldset>
     <br />
