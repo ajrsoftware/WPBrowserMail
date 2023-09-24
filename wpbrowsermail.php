@@ -26,8 +26,11 @@
 
 defined('ABSPATH') || exit;
 
-require_once 'includes/wpbm-constants.php';
+define('WPBM_VERSION', '0.0.0');
+define('WPBM_DIR', plugins_url('', __FILE__));
+
 require_once 'includes/wpbm-helpers.php';
+require_once 'includes/wpbm-scripts.php';
 require_once 'includes/wpbm-defaults.php';
 require_once 'includes/wpbm-settings.php';
 
@@ -35,6 +38,7 @@ add_action('plugins_loaded', 'wpbm_start');
 
 function wpbm_start(): void
 {
+    add_action('admin_enqueue_scripts', 'wpbm_assets');
     function wpbm_settings_page(): void
     {
         add_options_page('WPBrowserMail', 'WPBrowserMail', 'manage_options', 'wp-browser-mail', 'wpbm_render_plugin_settings_page');

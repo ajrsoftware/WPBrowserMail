@@ -1,0 +1,7 @@
+.wpbm_plugin_options #wpbm_plugin_options_usage_auto_tip {
+    display: none;
+}
+
+.wpbm_plugin_options #wpbm_plugin_options_usage_shortcode_tip {
+    display: none;
+}

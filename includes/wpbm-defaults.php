@@ -13,4 +13,9 @@ function wpbm_defaults(): void
         $options['label'] = 'View it in your browser.';
         update_option('wpbm_plugin_options', $options);
     }
+
+    if (empty($options['usage'])) {
+        $options['usage'] = 'auto';
+        update_option('wpbm_plugin_options', $options);
+    }
 }

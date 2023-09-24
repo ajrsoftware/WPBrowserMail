@@ -10,6 +10,7 @@
 /src
 .eslintrc.json
 .nvmrc
+.npmrc
 .prettierrc
 composer.json
 composer.lock
