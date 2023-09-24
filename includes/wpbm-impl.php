@@ -2,7 +2,7 @@
 
 function wpbm_generate(string $message, string $label, string $url): string
 {
-    $content = '<div class="wpbm-output">';
+    $content = '<div class="wpbm-output" style="font-family:sans-serif;text-align:center;">';
     $content .= '<p>';
     $content .= $message;
     $content .= ' ';

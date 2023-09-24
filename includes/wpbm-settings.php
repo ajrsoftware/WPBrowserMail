@@ -17,6 +17,17 @@ function wpbm_render_plugin_settings_page()
         ?>
         <input name="submit" style="margin-top: 20px;" class="button button-primary" type="submit" value="<?php esc_attr_e('Save'); ?>" />
     </form>
+    <br />
+    <p><strong>Security notice:</strong></p>
+    <ul>
+        <li>
+            <p>By choosing to utilize the <strong>WPBrowserMail</strong> plugin, users affirmatively acknowledge and accept full responsibility for all aspects of their email communication.</p>
+            <p> This encompasses obtaining explicit consent for sending emails, safeguarding sensitive information, and abiding by applicable data protection and privacy regulations.</p>
+            <p> Additionally, users are encouraged to routinely review and update their email content and recipient lists to ensure relevancy and compliance.</p>
+            <p>The user's diligence in these matters plays a crucial role in maintaining a high standard of email communication and upholding ethical email practices.</p>
+        </li>
+        <li>Mail accessed via the <i>view in browser</i> link can only be viewed once.</li>
+    </ul>
 <?php
 }
 
@@ -76,9 +87,8 @@ function wpbm_plugin_section_useage()
         </label>
     </fieldset>
     <br />
-    <p id="wpbm_plugin_options_usage_auto_tip">Your email browser link will automatically be added to the footer of your mail</p>
+    <p id="wpbm_plugin_options_usage_auto_tip">Your email browser link will automatically be added to the footer of your mail.</p>
     <pre id="wpbm_plugin_options_usage_shortcode_tip"><code>[something]</code></pre>
-    <br />
 <?php
 }
 

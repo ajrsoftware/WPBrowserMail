@@ -23,7 +23,8 @@ function wpbm_handle_route()
         exit;
     }
 
-    $value = get_option('wpbm_plugin_key_values')[$wpbm_key];
+    $key_values = get_option('wpbm_plugin_key_values');
+    $value = $key_values[$wpbm_key];
 
     if (empty($value)) {
         status_header(404);
@@ -32,6 +33,11 @@ function wpbm_handle_route()
     }
 
     echo $value;
+
+    // Remove the entry so the mail cannot be access again by sharing links etc.
+    unset($key_values[$wpbm_key]);
+    update_option('wpbm_plugin_key_values', $key_values);
+
     exit;
 }
 add_action('template_redirect', 'wpbm_handle_route');
