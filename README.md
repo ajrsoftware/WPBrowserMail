@@ -1,7 +1,5 @@
 # WPBrowserMail
 
----
-
 -   Contributors: [Ashley Redman](https://github.com/AshleyRedman)
 -   Tags: wordpress, woocommerce, email
 -   Requires at least: 5.8
