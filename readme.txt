@@ -4,7 +4,7 @@ Tags: wordpress, woocommerce, email
 Requires at least: 5.8
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 0.0.0
+Stable tag: 0.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
