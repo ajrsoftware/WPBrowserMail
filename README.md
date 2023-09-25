@@ -18,7 +18,13 @@ WordPress Plugin to allow emails to be viewed in the browser
 -   PHP 7.4 or greater is recommended
 -   MySQL 5.7 or greater is recommended
 
-### Security notice:
+### Getting started
+
+[See our getting started guide](https://www.wpbrowsermail.com)
+
+[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases)
+
+#### Security notice:
 
 By choosing to utilize the WPBrowserMail plugin, users affirmatively acknowledge and accept full responsibility for all aspects of their email communication.
 
@@ -28,9 +34,3 @@ Additionally, users are encouraged to routinely review and update their email co
 
 The user's diligence in these matters plays a crucial role in maintaining a high standard of email communication and upholding ethical email practices.
 Mail accessed via the view in browser link can only be viewed once.
-
-### Getting started
-
-[See our getting started guide](https://www.wpbrowsermail.com)
-
-[See changelog for all versions](https://github.com/ajrsoftware/WPBrowserMail/releases)
