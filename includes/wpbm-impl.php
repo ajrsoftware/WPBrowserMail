@@ -9,9 +9,9 @@
  *
  * @return string The HTML content of the email.
  */
-function wpbm_generate(string $message, string $label, string $url): string
+function wpbm_generate(string $message, string $label, string $url = null): string
 {
-    $content = '<div class="wpbm-output" style="font-family:sans-serif;text-align:center;">';
+    $content = '<div class="wpbm-output" style="display:block;font-family:sans-serif;text-align:center;">';
     $content .= '<p>';
     $content .= $message;
     $content .= ' ';

@@ -1,6 +1,31 @@
 <?php
 
 /**
+ * Handles tasks to be performed when the WordPress Browser Mail (wpbrowsermail) plugin is deactivated.
+ *
+ * This function is executed when the plugin is deactivated and is responsible for removing plugin-specific options from the database.
+ */
+function wpbm_deactivation(): void
+{
+    delete_option('wpbm_plugin_options');
+    delete_option('wpbm_plugin_key_values');
+}
+
+/**
+ * Adds a settings link to the plugin on the Plugins page in the WordPress admin.
+ *
+ * @param array $links An array of existing links.
+ * @return array The modified array of links with the added settings link.
+ */
+function wpbm_settings_link(array $links): array
+{
+    $url = get_admin_url() . "options-general.php?page=wp-browser-mail";
+    $settings_link = '<a href="' . $url . '">' . __('Settings', 'textdomain') . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+
+/**
  * Registers the settings page for the WordPress Browser Mail (wpbrowsermail) plugin.
  *
  * This function adds an options page to the WordPress admin menu, allowing users to access plugin settings.
@@ -18,7 +43,7 @@ function wpbm_settings_page(): void
  * This function generates the HTML content for the plugin's settings page in the WordPress admin area.
  * It includes a form for submitting options, along with information and guidelines related to email communication security.
  */
-function wpbm_render_plugin_settings_page()
+function wpbm_render_plugin_settings_page(): void
 {
 ?>
     <h1 style="margin-bottom: 40px;">WPBrowserMail</h1>
@@ -39,7 +64,7 @@ function wpbm_render_plugin_settings_page()
             <p>The user's diligence in these matters plays a crucial role in maintaining a high standard of email communication and upholding ethical email practices.</p>
         </li>
         <li>Mail accessed via the <i>view in browser</i> link can only be viewed once.</li>
-        <li><a href="https://www.wpbrowsermail.com/security" target="_blank" rel="noopener noreferrer">Read more</a></li>
+        <li><a href="https://github.com/ajrsoftware/WPBrowserMail" target="_blank" rel="noopener noreferrer">Read more</a></li>
     </ul>
 <?php
 }
@@ -50,7 +75,7 @@ function wpbm_render_plugin_settings_page()
  * This function sets up the plugin's settings fields, sections, and validation callbacks.
  * It establishes the structure for storing and managing plugin options.
  */
-function wpbm_register_settings()
+function wpbm_register_settings(): void
 {
     register_setting('wpbm_plugin_options', 'wpbm_plugin_options', ['wpbm_plugin_options_validate']);
 
@@ -71,7 +96,7 @@ function wpbm_register_settings()
  *
  * @return array The validated and sanitized input values.
  */
-function wpbm_plugin_options_validate($input): array
+function wpbm_plugin_options_validate(array $input): array
 {
     $newinput['message'] = trim($input['message']);
     if (!preg_match('/^[a-z0-9]{32}$/i', $newinput['message'])) {
@@ -86,7 +111,7 @@ function wpbm_plugin_options_validate($input): array
  *
  * This function generates the HTML content that provides instructions and information for the settings section.
  */
-function wpbm_plugin_section_text()
+function wpbm_plugin_section_text(): void
 {
 ?>
     <p>Set the text for the message and link label below</p>
@@ -98,7 +123,7 @@ function wpbm_plugin_section_text()
  *
  * This function generates HTML content that displays a preview of how the email message and link label will appear.
  */
-function wpbm_plugin_section_preview()
+function wpbm_plugin_section_preview(): void
 {
     $options = get_option('wpbm_plugin_options');
 ?>
@@ -111,19 +136,19 @@ function wpbm_plugin_section_preview()
  *
  * This function generates HTML content that allows users to select how they want to include the email link.
  */
-function wpbm_plugin_section_useage()
+function wpbm_plugin_section_useage(): void
 {
     $options = get_option('wpbm_plugin_options');
 ?>
     <fieldset>
         <label for="wpbm_plugin_options_usage_auto">
             <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_auto" class="wpbm_plugin_options_usage_auto" value="auto" <?php echo esc_attr($options['usage']) === 'auto' ? 'checked' : '' ?>>
-            <span>Include as email footer <a href="https://www.wpbrowsermail.com/auto-include" target="_blank" rel="noopener noreferrer">(learn more)</a></span>
+            <span>Include as email footer <a href="https://developer.wordpress.org/reference/hooks/wp_mail/" target="_blank" rel="noopener noreferrer">learn more</a></span>
         </label>
         <br />
         <label for="wpbm_plugin_options_usage_shortcode">
             <input type="radio" name="wpbm_plugin_options[usage]" id="wpbm_plugin_options_usage_shortcode" class="wpbm_plugin_options_usage_shortcode" value="shortcode" <?php echo esc_attr($options['usage']) === 'shortcode' ? 'checked' : '' ?>>
-            <span>Use shortcode <a href="https://www.wpbrowsermail.com/shortcode" target="_blank" rel="noopener noreferrer">(learn more)</a></span>
+            <span>Use shortcode <a href="https://developer.wordpress.org/reference/functions/do_shortcode" target="_blank" rel="noopener noreferrer">learn more</a></span>
         </label>
     </fieldset>
     <br />
@@ -137,7 +162,7 @@ function wpbm_plugin_section_useage()
  *
  * This function generates HTML content that allows users to input the email message text.
  */
-function wpbm_plugin_setting_message()
+function wpbm_plugin_setting_message(): void
 {
     $options = get_option('wpbm_plugin_options');
 ?>
@@ -150,7 +175,7 @@ function wpbm_plugin_setting_message()
  *
  * This function generates HTML content that allows users to input the label text for the email link.
  */
-function wpbm_plugin_setting_label()
+function wpbm_plugin_setting_label(): void
 {
     $options = get_option('wpbm_plugin_options');
 ?>

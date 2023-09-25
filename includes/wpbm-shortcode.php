@@ -7,7 +7,13 @@
  */
 function wpbm_shortcode(): string
 {
-    return '<span id="wpbm_shortcode_tag" style="display:none;"></span>';
+    $options = get_option('wpbm_plugin_options');
+    $message = $options['message'];
+    $label = $options['label'];
+
+    $content = wpbm_generate($message, $label);
+
+    return $content;
 }
 
 /**
@@ -20,9 +26,9 @@ function wpbm_shortcode(): string
  */
 function wpbm_shortcode_replace(string $body, string $key): string
 {
-    $id = 'wpbm_shortcode_tag';
     $content = wpbm_email_footer($key);
-    return wpbm_replace_element_by_id($body, $id, $content);
+    $replaced = wpbm_replace_element_by_id($body, $content);
+    return $replaced;
 }
 
 /**
@@ -34,25 +40,11 @@ function wpbm_shortcode_replace(string $body, string $key): string
  *
  * @return string             The modified HTML content with the element replaced.
  */
-function wpbm_replace_element_by_id(string $html, string $target_id, string $new_html): string
+function wpbm_replace_element_by_id(string $html, string $new_html): string
 {
-    $dom = new DOMDocument;
-    libxml_use_internal_errors(true);
-    $dom->loadHTML($html);
-    libxml_clear_errors();
+    $node_to_find = wpbm_shortcode();
+    $count = 1;
+    $new = str_replace($node_to_find, $new_html, $html, $count);
 
-    $xpath = new DOMXPath($dom);
-    $target_element = $xpath->query("//*[@id='$target_id']")->item(0);
-
-    if ($target_element) {
-        $new_fragment = $dom->createDocumentFragment();
-        $new_fragment->appendXML($new_html);
-
-        $parent = $target_element->parentNode;
-        $parent->replaceChild($new_fragment, $target_element);
-
-        return $dom->saveHTML();
-    } else {
-        return $html;
-    }
+    return $new;
 }

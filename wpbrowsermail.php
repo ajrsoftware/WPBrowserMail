@@ -47,10 +47,12 @@ add_action('plugins_loaded', 'wpbm_start');
  */
 function wpbm_start(): void
 {
+    add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'wpbm_settings_link');
+    register_deactivation_hook(__FILE__, 'wpbm_deactivation');
     add_action('admin_enqueue_scripts', 'wpbm_assets');
     add_action('admin_menu', 'wpbm_settings_page');
     add_action('admin_init', 'wpbm_register_settings');
+    add_action('template_redirect', 'wpbm_route_request', 0);
     add_shortcode('wpbrowsermail', 'wpbm_shortcode');
     add_filter('wp_mail', 'wpbm_wp_mail');
-    add_action('template_redirect', 'wpbm_route_request', 0);
 }

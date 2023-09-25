@@ -33,7 +33,7 @@ function wpbm_minify_html(string $html): string
  *
  * @return string The generated random key.
  */
-function wpbm_generate_random_key(int $length)
+function wpbm_generate_random_key(int $length): string
 {
     $current_datetime = new DateTime();
     $timestamp = $current_datetime->format('YmdHis');
@@ -61,7 +61,7 @@ function wpbm_email_footer(string $key): string
     $message = $options['message'];
     $label = $options['label'];
     $url = trailingslashit(site_url()) . '/wpbrowsermail?wpbm_key=' . $key . '';
-    $content = wpbm_minify_html(wpbm_generate($message, $label, $url));
+    $content = wpbm_generate($message, $label, $url);
     return $content;
 }
 
@@ -72,7 +72,7 @@ function wpbm_email_footer(string $key): string
  *
  * @return array Modified array of email attributes.
  */
-function wpbm_wp_mail($atts)
+function wpbm_wp_mail(array $atts): array
 {
     $key = wpbm_generate_random_key(12);
     $options = get_option('wpbm_plugin_options');
