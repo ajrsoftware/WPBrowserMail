@@ -33,6 +33,7 @@ WordPress Plugin to allow emails to be viewed in the browser
 
 == Screenshots ==
 
+1-Settings. screenshot-1.png
 
 == Security notice ==
 
