@@ -32,13 +32,11 @@ function wpbm_shortcode_replace(string $body, string $key): string
 }
 
 /**
- * Replace an HTML element with a specified ID with new HTML content.
+ * Replaces a specific element in the HTML with new content based on a provided shortcode.
  *
- * @param string $html        The original HTML content.
- * @param string $target_id   The ID of the element to be replaced.
- * @param string $new_html    The new HTML content to replace the element with.
- *
- * @return string             The modified HTML content with the element replaced.
+ * @param string $html The original HTML containing the element to be replaced.
+ * @param string $new_html The new HTML content to replace the element with.
+ * @return string The modified HTML with the element replaced.
  */
 function wpbm_replace_element_by_id(string $html, string $new_html): string
 {
