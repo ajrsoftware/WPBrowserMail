@@ -1,32 +1,6 @@
 <?php
 
 /**
- * Minifies HTML content by removing unnecessary whitespace and comments.
- *
- * @param string $html The original HTML content.
- *
- * @return string The minified HTML content.
- */
-function wpbm_minify_html(string $html): string
-{
-    $search = [
-        '/(\n|^)(\x20+|\t)/',
-        '/(\n|^)\/\/(.*?)(\n|$)/',
-        '/\n/',
-        '/\<\!--.*?-->/',
-        '/(\x20+|\t)/',
-        '/\>\s+\</',
-        '/(\"|\')\s+\>/',
-        '/=\s+(\"|\')/'
-    ];
-
-    $replace = ["\n", "\n", " ", "", " ", "><", "$1>", "=$1"];
-
-    $html = preg_replace($search, $replace, $html);
-    return $html;
-}
-
-/**
  * Generates a random key of specified length for use in WordPress Browser Mail (wpbrowsermail).
  *
  * @param int $length The length of the random key.

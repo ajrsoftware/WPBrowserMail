@@ -1,0 +1,12 @@
+{
+    "name": "wpbrowsermail",
+    "version": "0.0.0",
+    "description": "",
+    "scripts": {
+        "format": "npx prettier . --check"
+    },
+    "author": "AJR Software",
+    "devDependencies": {
+        "prettier": "^3.0.3"
+    }
+}

@@ -32,3 +32,15 @@ WordPress Plugin to allow emails to be viewed in the browser
 [Submit a new issue on our repository](https://github.com/ajrsoftware/WPBrowserMail/issues)
 
 == Screenshots ==
+
+
+== Security notice ==
+
+By choosing to utilize the WPBrowserMail plugin, users affirmatively acknowledge and accept full responsibility for all aspects of their email communication.
+
+This encompasses obtaining explicit consent for sending emails, safeguarding sensitive information, and abiding by applicable data protection and privacy regulations.
+
+Additionally, users are encouraged to routinely review and update their email content and recipient lists to ensure relevancy and compliance.
+
+The user's diligence in these matters plays a crucial role in maintaining a high standard of email communication and upholding ethical email practices.
+Mail accessed via the view in browser link can only be viewed once.
